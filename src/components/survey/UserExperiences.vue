@@ -3,15 +3,13 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button @click="loadExperiences"
-          >Load Submitted Experiences</base-button
-        >
+        <base-button @click="loadExperiences">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
       <p v-else-if="!isLoading && error">{{ error }}</p>
-      <p v-else-if="!isLoading && (!results || results.length === 0)">
-        No stored experiences found. Start adding some survey results first.
-      </p>
+      <p
+        v-else-if="!isLoading && (!results || results.length === 0)"
+      >No stored experiences found. Start adding some survey results first.</p>
       <ul v-else>
         <survey-result
           v-for="result in results"
@@ -42,11 +40,7 @@ export default {
     loadExperiences() {
       this.isLoading = true;
       this.error = null;
-
-      fetch(
-        // el.json es exlusivo de firebase
-        'https://vue-http-demo-4e514-default-rtdb.europe-west1.firebasedatabase.app/miBaseDeDatos.json'
-      )
+      fetch('https://vue-http-demo-4e514-default-rtdb.europe-west1.firebasedatabase.app/miBaseDeDatos.json')
         .then((response) => {
           if (response.ok) {
             return response.json();
