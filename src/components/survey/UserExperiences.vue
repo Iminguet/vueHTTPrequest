@@ -52,7 +52,9 @@ export default {
         });
     },
   },
-
+  mounted() {
+    this.loadExperiences();
+  },
   components: {
     SurveyResult,
   },
